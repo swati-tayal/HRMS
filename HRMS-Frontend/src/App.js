@@ -8,6 +8,7 @@ import AddProduct from './component/AddProduct';
 import ProductList from './component/ProductList';
 import UpdateProduct from './component/UpdateProduct';
 import PrivateComponent from './component/privateComponent';
+import Interviewers from './interviewers/pages/Interviewer';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           </Route>
           <Route path="/signUp" element={<Signup/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
+          <Route path="/interviewers" element={<Interviewers />}></Route>
+          {/* <Route path="/interviewers/:id" element={Interviewers}></Route> */}
         </Routes>
       </BrowserRouter>
       <Footer />
