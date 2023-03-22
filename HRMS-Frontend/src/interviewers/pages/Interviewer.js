@@ -1,6 +1,7 @@
 import React from "react";
 
 import InterviewersList from "../components/InterviewersList";
+import { Button } from "../../shared/components/FormElements/Button";
 
 const DUMMY_INTERVIEWERS = [
     {
@@ -25,7 +26,12 @@ const DUMMY_INTERVIEWERS = [
 
 const Interviewers = () => {
     return (
+        <>
+        <div className="center">
+            <Button to="/interviewers/add">Add Interviewer</Button>
+        </div>
         <InterviewersList items={DUMMY_INTERVIEWERS} />
+        </>
     )
 }
 
