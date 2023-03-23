@@ -1,7 +1,7 @@
 import React from "react";
 
 import InterviewersList from "../components/InterviewersList";
-import { Button } from "../../shared/components/FormElements/Button";
+import { Button } from "../../../shared/components/FormElements/Button";
 
 const DUMMY_INTERVIEWERS = [
     {
