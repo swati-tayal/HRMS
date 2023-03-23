@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require("cors");
 const app =express();
+const mongoose = require("mongoose");
 
-require('./db/config');
+// require('./db/config');
 const User = require('./db/user');
 const Product = require('./db/product');
 
@@ -76,4 +77,13 @@ app.get('/search/:key', async(req,res)=>{
     res.send(result)
 })
 
-app.listen(5000);
+mongoose
+  .connect(
+    "mongodb+srv://praveen:NPXI73sK0MTXOSzB@cluster0.jfruq7o.mongodb.net/hrms?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    app.listen(5000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });

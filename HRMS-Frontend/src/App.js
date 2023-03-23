@@ -19,9 +19,9 @@ function App() {
         <Nav/>
         <Routes>
           <Route element={<PrivateComponent/>}>
-            <Route path="/" element={<ProductList/>}></Route>
-            <Route path="/add" element={<AddProduct/>}></Route>
-            <Route path="/update/:id" element={<UpdateProduct/>}></Route>
+            {/* <Route path="/" element={<ProductList/>}></Route> */}
+            {/* <Route path="/add" element={<AddProduct/>}></Route> */}
+            {/* <Route path="/update/:id" element={<UpdateProduct/>}></Route> */}
             <Route path="/logout" element={<h1>Logout Component</h1>}></Route>
             <Route path="/profile" element={<h1>profile Component</h1>}></Route>
           </Route>
