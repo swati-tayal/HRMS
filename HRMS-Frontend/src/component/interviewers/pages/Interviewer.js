@@ -8,6 +8,7 @@ const DUMMY_INTERVIEWERS = [
         id:"i1",
         name: "Praveen Dhakade",
         email: "praveen@test.com",
+        description: "Manager",
         interviews: [{
             name: "Test",
             email: "test@test.com"
@@ -17,6 +18,7 @@ const DUMMY_INTERVIEWERS = [
         id: "i2",
         name: "Praveen Dhakade",
         email: "praveen@test.com",
+        description: "Technical Lead",
         interviews: [{
             name: "Test",
             email: "test@test.com"

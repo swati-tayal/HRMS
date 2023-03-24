@@ -23,6 +23,7 @@ const InterviewersList = (props) => {
               key={user.id}
               id={user.id}
               name={user.name}
+              description={user.description}
               interviewCount={user.interviews.length}
             />
           ))}

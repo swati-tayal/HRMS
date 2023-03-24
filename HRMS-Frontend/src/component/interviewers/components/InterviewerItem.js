@@ -11,6 +11,7 @@ const InterviewerItem = (props) => {
         <Link to={`intererviewer/${props.id}`}>
           <div className="interviewer-item__info">
             <h2>{props.name}</h2>
+            <p>{ props.description }</p>
             <h3>
               {props.interviewCount} {props.interviewCount === 1 ? "Interview" : "Interviews"}
             </h3>
