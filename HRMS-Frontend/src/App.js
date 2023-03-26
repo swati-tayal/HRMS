@@ -10,6 +10,7 @@ import Login from './component/Login';
 import PrivateComponent from './component/privateComponent';
 import InterviewerList from './component/interviewers/pages/Interviewer';
 import AddInterviewer from './component/interviewers/pages/AddInterviewer';
+import InterviewerDetails from "./component/interviewers/pages/InterviewerDetails";
 import CandidateList from './component/candidates/pages/Candidates';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/interviewers" element={<InterviewerList />}></Route>
             <Route path="/candidates" element={<CandidateList />}></Route>
             <Route path="/interviewers/add" element={<AddInterviewer />}></Route>
+            <Route path="/interviewers/interviewer/:interviewerId" element={<InterviewerDetails />}></Route>
             <Route path="/logout" element={<h1>Logout Component</h1>}></Route>
           </Route>
           <Route path="/signUp" element={<Signup/>}></Route>

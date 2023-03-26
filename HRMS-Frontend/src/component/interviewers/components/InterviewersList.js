@@ -24,7 +24,7 @@ const InterviewersList = (props) => {
               id={user.id}
               name={user.name}
               description={user.description}
-              interviewCount={user.interviews.length}
+              // interviewCount={user.interviews.length}
             />
           ))}
         </ul>

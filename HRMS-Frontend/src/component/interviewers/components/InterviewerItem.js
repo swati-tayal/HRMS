@@ -8,7 +8,7 @@ const InterviewerItem = (props) => {
   return (
     <li className="interviewer-item">
       <Card className="interviewer-item_content">
-        <Link to={`intererviewer/${props.id}`}>
+        <Link to={`interviewer/${props.id}`}>
           <div className="interviewer-item__info">
             <h2>{props.name}</h2>
             <p>{ props.description }</p>
