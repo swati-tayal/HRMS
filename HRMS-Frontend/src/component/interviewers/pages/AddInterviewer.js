@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Card from "../../../shared/components/UIElements/Card";
 import Input from "../../../shared/components/FormElements/Input";
@@ -8,6 +9,7 @@ import useForm from "../../../shared/hooks/form-hook";
 import "./AddInteviewer.css"
 
 const AddInterviewer = () => {
+  const navigate = useNavigate();
   const [formState, inputHandler, setFormData] = useForm(
     {
       name: {
@@ -18,13 +20,32 @@ const AddInterviewer = () => {
         value: "",
         isValid: false,
       },
+      description: {
+        value: "",
+        isValid: false
+      }
     },
     false
   );
 
+  const interviewerSubmitHandler  = async (event) => {
+    event.preventDefault();
+    try {
+      await fetch(`http://localhost:5000/api/interviewers`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: formState.inputs.name.value,
+          email: formState.inputs.email.value,
+          description: formState.inputs.description.value
+        }),
+        headers: {"Content-Type": "application/json"}
+      })
+      navigate("/interviewers");
+    } catch (err) {}
+  }
   return (
     <Card className="authentication">
-      <form action="/">
+      <form onSubmit={interviewerSubmitHandler}>
         <h2>Add Interviewer</h2>
         <Input
           type="text"
