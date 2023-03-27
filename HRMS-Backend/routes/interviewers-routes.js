@@ -7,9 +7,20 @@ const router = express.Router();
 // get Interviewers list form db
 router.get("/", interviewerController.getInterviewers);
 
-router.get("/interviewer/:interviewerId", interviewerController.getInterviewerById)
+router.get(
+  "/interviewer/:interviewerId",
+  interviewerController.getInterviewerById
+);
 
 // add interviewers to db
-router.post("/", interviewerController.addInterviewer)
+router.post(
+  "/",
+  [
+    check("name").not().isEmpty(),
+    check("email").normalizeEmail().isEmail(),
+    check("descriptiopn").isLength({ min: 7 }),
+  ],
+  interviewerController.addInterviewer
+);
 
 module.exports = router;

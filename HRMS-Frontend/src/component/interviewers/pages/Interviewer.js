@@ -19,7 +19,7 @@ const Interviewers = () => {
 
   return (
     <>
-      <div className="center">
+      <div className="center" style={{margin:"5px auto"}}>
         <Button to="/interviewers/add">Add Interviewer</Button>
       </div>
       <InterviewersList items={loadedInterviewers} />
