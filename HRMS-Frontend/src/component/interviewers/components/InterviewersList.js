@@ -1,7 +1,7 @@
 import React from "react";
 
 import InterviewerItem from "./InterviewerItem";
-import Card from "../../shared/components/UIElements/Card";
+import Card from "../../../shared/components/UIElements/Card";
 import "./InterviewersList.css";
 
 const InterviewersList = (props) => {
@@ -23,7 +23,8 @@ const InterviewersList = (props) => {
               key={user.id}
               id={user.id}
               name={user.name}
-              interviewCount={user.interviews.length}
+              description={user.description}
+              // interviewCount={user.interviews.length}
             />
           ))}
         </ul>

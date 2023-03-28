@@ -1,16 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import Card from "../../shared/components/UIElements/Card";
+import Card from "../../../shared/components/UIElements/Card";
 import "./InterviewerItem.css";
 
 const InterviewerItem = (props) => {
   return (
     <li className="interviewer-item">
       <Card className="interviewer-item_content">
-        <Link to={`intererviewers/${props.id}`}>
+        <Link to={`interviewer/${props.id}`}>
           <div className="interviewer-item__info">
             <h2>{props.name}</h2>
+            <p>{ props.description }</p>
             <h3>
               {props.interviewCount} {props.interviewCount === 1 ? "Interview" : "Interviews"}
             </h3>

@@ -5,7 +5,7 @@ import "./Button.css"
 
 export const Button = (props) => {
   if (props.to) {
-    return <Link to={props.to}>{props.children}</Link>;
+    return <Link className="button" to={props.to}>{props.children}</Link>;
   }
 
   return (

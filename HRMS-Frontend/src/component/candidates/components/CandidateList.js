@@ -1,7 +1,7 @@
 import React from "react";
 
 import CandidateItem from "./CandidateItem";
-import Card from "../../shared/components/UIElements/Card";
+import Card from "../../../shared/components/UIElements/Card";
 import "./CandidateList.css";
 
 const CandidateList = (props) => {
