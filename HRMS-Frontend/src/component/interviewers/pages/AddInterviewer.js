@@ -75,7 +75,7 @@ const AddInterviewer = () => {
           label="Description"
           validators={[VALIDATOR_MINLENGTH(7)]}
           onInput={inputHandler}
-          errorText="Please enter a valid description."
+          errorText="Please enter a valid description. Minimum 7 characters."
         />
         <Button type="submit" disabled={!formState.isValid}>
           SAVE
