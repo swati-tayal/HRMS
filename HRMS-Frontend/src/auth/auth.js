@@ -16,7 +16,7 @@ const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [role, setRole] = useState("");
   const navigate = useNavigate();
-  const [formState, inputHandler] = useForm(
+  const [formState, inputHandler, setFormData] = useForm(
     {
       email: {
         value: "",
@@ -85,6 +85,7 @@ const Auth = () => {
   const switchModeHandler = () => {
     setIsLogin((prev) => !prev);
   };
+
 
   return (
     <Card className="authentication">
