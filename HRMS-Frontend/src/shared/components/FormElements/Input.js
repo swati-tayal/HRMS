@@ -62,9 +62,13 @@ const Input = (props) => {
   }, [id, onInput, value, isValid]);
 
   const changeHandler = (event) => {
+    let val = event.target.value;
+    if (props,id ==="name") {
+      val = val.replace(/[^A-Za-z ]/gi, "")
+    }
     dispatch({
       type: "CHANGE",
-      val: event.target.value,
+      val: val,
       validators: props.validators,
     });
   };
