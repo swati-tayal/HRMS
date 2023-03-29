@@ -1,37 +1,55 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState, useEffect} from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const Nav=()=>{
-    const auth=localStorage.getItem('user');
-    // console.log("aaa", auth);
-    const navigation =useNavigate();
-    const logout = ()=>{
-        // console.log("logout");
-        localStorage.clear();
-        navigation("/signUp");
-    }
-    return(
-        <div>
-            <img alt="logo" src={require('../logo.png')} className="logo"/>
-            {
-            auth?
-            <ul className="nav-ul">
-                {/* <li><Link to="/">Products</Link></li> */}
-                {/* <li><Link to="/add">Add Product</Link></li>
-                <li><Link to="/update">Update Product</Link></li> */}
-                <li><Link to="/interviewers">Interviewers</Link></li>
-                <li><Link to="/candidates">Candidates</Link></li>
-            <li className="logout"><Link onClick={logout} to="/signUp">Logout ({JSON.parse(auth).name})</Link></li>
-                
-            </ul>
-            :
-            <ul className="nav-ul nav-right">
-                <li><Link to="/signUp">SignUp</Link></li>
-                <li><Link to="/login">Login</Link></li>
-            </ul>
-            }
+const Nav = () => {
+    const auth = localStorage.getItem("user");
+//   const [auth, setAuth] = useState();
+    // useEffect(() => {
+    //     const user = localStorage.getItem("user")
+    // setAuth(JSON.parse(user))
+    // // console.log("aaa", auth)
+
+    // }, [auth])
+  const navigation = useNavigate();
+  const logout = () => {
+    // console.log("logout");
+    localStorage.clear();
+    navigation("/auth");
+  };
+  return (
+    <div>
+      <ul className="nav-ul">
+        {auth && JSON.parse(auth).role === "admin" && (
+          <>
+            <li>
+              <Link to="/interviewers">Interviewers</Link>
+            </li>
+            <li>
+              <Link to="/candidates">Candidates</Link>
+            </li>
+          </>
+       )}
+       { auth && JSON.parse(auth).role==="interviewer" && <>
+       <li>Interviews</li>
+       <li>Profile</li>
+       </>}
+       <div className="nav-right">
+        {!auth && 
+        <li>
+          <Link to="/auth">Login</Link>
+        </li>
+        }
+        {auth && (
+          <li className="logout">
+            <Link onClick={logout} to="/auth">
+              Logout ({JSON.parse(auth).role})
+            </Link>
+          </li>
+        )}
         </div>
-    )
-}
+      </ul>
+    </div>
+  );
+};
 
 export default Nav;
