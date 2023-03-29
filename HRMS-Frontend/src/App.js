@@ -12,6 +12,7 @@ import InterviewerList from './component/interviewers/pages/Interviewer';
 import AddInterviewer from './component/interviewers/pages/AddInterviewer';
 import InterviewerDetails from "./component/interviewers/pages/InterviewerDetails";
 import CandidateList from './component/candidates/pages/Candidates';
+import Auth from './auth/auth';
 
 function App() {
   return (
@@ -20,18 +21,15 @@ function App() {
         <Nav/>
         <Routes>
           <Route element={<PrivateComponent/>}>
-            {/* <Route path="/" element={<ProductList/>}></Route> */}
-            {/* <Route path="/add" element={<AddProduct/>}></Route> */}
-            {/* <Route path="/update/:id" element={<UpdateProduct/>}></Route> */}
-            {/* <Route path="/profile" element={<h1>profile Component</h1>}></Route> */}
             <Route path="/interviewers" element={<InterviewerList />}></Route>
             <Route path="/candidates" element={<CandidateList />}></Route>
             <Route path="/interviewers/add" element={<AddInterviewer />}></Route>
             <Route path="/interviewers/interviewer/:interviewerId" element={<InterviewerDetails />}></Route>
             <Route path="/logout" element={<h1>Logout Component</h1>}></Route>
           </Route>
-          <Route path="/signUp" element={<Signup/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/" element={<h1>home page</h1>}></Route>
+          <Route path="/dashboard" element={<h1>Interviewer dashboard</h1>}></Route>
+          <Route path="/auth" element={<Auth/>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />

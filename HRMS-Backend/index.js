@@ -6,32 +6,30 @@ const mongoose = require("mongoose");
 const User = require('./db/user');
 // const Product = require('./db/product');
 const interviewerRoutes = require("./routes/interviewers-routes")
+const userInterviewerRoutes = require("./routes/user-interviewer-route");
+const adminRoutes = require("./routes/admin-routes");
 
 app.use(express.json());
 app.use(cors());
 
-app.post("/register", async (req,res)=>{
-    let user = new User(req.body);
-    let result = await user.save();
-    result = result.toObject();
-    delete result.password;
-    res.send(result)
-})
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+//   next();
+// });
 
-app.post('/login',async (req, res)=>{
-    if(req.body.email && req.body.password){
-        let user = await User.findOne(req.body).select("-password");
-        if(user){
-            res.send(user);
-        }else{
-            res.send('No User Found')
-        }
-    }else{
-        res.send('No User Found')
-    }
-})
+// app.use((req, res, next) => {
+//   const error = new Error("Route not found");
+//   throw error;
+// });
 
 app.use("/api/interviewers", interviewerRoutes);
+app.use("/api/interviewer", userInterviewerRoutes);
+app.use("/api/admin", adminRoutes);
 
 // app.post('/add-product',async (req, res)=>{
 //     let product = new Product(req.body);
