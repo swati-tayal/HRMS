@@ -2,21 +2,27 @@ import Nav from './component/Nav';
 import './App.css';
 import Footer from './component/Footer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Signup from './component/SignUp';
-import Login from './component/Login';
-// import AddProduct from './component/AddProduct';
-// import ProductList from './component/ProductList';
-// import UpdateProduct from './component/UpdateProduct';
+
+// import { AuthContext } from './shared/context/auth-context';
 import PrivateComponent from './component/privateComponent';
 import InterviewerList from './component/interviewers/pages/Interviewer';
 import AddInterviewer from './component/interviewers/pages/AddInterviewer';
 import InterviewerDetails from "./component/interviewers/pages/InterviewerDetails";
 import CandidateList from './component/candidates/pages/Candidates';
+import Interview from './component/interviews/pages/Interview';
 import Auth from './auth/auth';
+// import { useAuth } from './shared/hooks/auth-hook';
 
 function App() {
+  // const [ token, login, logout, userId] = useAuth();
   return (
     <div className="App">
+      {/* <AuthContext.Provider value={{
+        token,
+        login: login,
+        logout: logout,
+        userId: userId
+      }}> */}
       <BrowserRouter>
         <Nav/>
         <Routes>
@@ -27,12 +33,15 @@ function App() {
             <Route path="/interviewers/interviewer/:interviewerId" element={<InterviewerDetails />}></Route>
             <Route path="/logout" element={<h1>Logout Component</h1>}></Route>
           </Route>
+            <Route path="/profile" element={<h2>Profile</h2>}></Route>
+            <Route path="/interviews" element={<Interview />}></Route>
           <Route path="/" element={<h1>home page</h1>}></Route>
           <Route path="/dashboard" element={<h1>Interviewer dashboard</h1>}></Route>
           <Route path="/auth" element={<Auth/>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />
+      {/* </AuthContext.Provider> */}
     </div>
   );
 }

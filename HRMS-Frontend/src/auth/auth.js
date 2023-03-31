@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../shared/context/auth-context";
 
 import Card from "../shared/components/UIElements/Card";
 import Input from "../shared/components/FormElements/Input";
@@ -13,8 +15,9 @@ import { Button } from "../shared/components/FormElements/Button";
 import "./auth.css";
 
 const Auth = () => {
+  const auth = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("admin");
   const navigate = useNavigate();
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -54,6 +57,7 @@ const Auth = () => {
           }
         );
         const data = await response.json();
+        auth.login(data.id, data.token);
         if (data) {
           localStorage.setItem("user", JSON.stringify(data));
         }

@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useNavigate } from "react-router-dom";
+// import { AuthContext } from "../../../shared/context/auth-context";
 
 import Card from "../../../shared/components/UIElements/Card";
 import Input from "../../../shared/components/FormElements/Input";
@@ -9,6 +10,8 @@ import useForm from "../../../shared/hooks/form-hook";
 import "./AddInteviewer.css"
 
 const AddInterviewer = () => {
+  // const auth = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -38,7 +41,8 @@ const AddInterviewer = () => {
           email: formState.inputs.email.value,
           description: formState.inputs.description.value
         }),
-        headers: {"Content-Type": "application/json"}
+        headers: {"Content-Type": "application/json",
+      Authorization: `Bearer ${user.token}`}
       })
       navigate("/interviewers");
     } catch (err) {}

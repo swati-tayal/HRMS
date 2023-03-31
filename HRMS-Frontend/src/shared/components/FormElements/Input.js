@@ -63,7 +63,7 @@ const Input = (props) => {
 
   const changeHandler = (event) => {
     let val = event.target.value;
-    if (props,id ==="name") {
+    if (props.id ==="name") {
       val = val.replace(/[^A-Za-z ]/gi, "")
     }
     dispatch({

@@ -1,5 +1,7 @@
 const {validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const Admin = require("../db/models/admin");
 
 const getAdmin = async (req, res, next) => {
@@ -63,7 +65,18 @@ const signUp = async (req, res, next) => {
     return next(err)
    }
 
-   res.json({role: createdAdmin.role, name: createdAdmin.name})
+   let token;
+   try {
+   token = jwt.sign(
+     { userId: createdAdmin.id, email: createdAdmin.email },
+     "secretpass_dont_share",
+     { expiresIn: "1h" }
+   );
+   } catch (err) {
+     const error = new HttpError("Couldn't signup!", 500);
+     return next(error);
+   }
+   res.json({role: createdAdmin.role, name: createdAdmin.name, token: token})
 
 }
 const login = async (req, res, next) => {
@@ -97,7 +110,19 @@ const login = async (req, res, next) => {
     return next(err)
    }
 
-   res.json({role: existingAdmin.role, email: existingAdmin.email})
+   let token;
+   try {
+   token = jwt.sign(
+     { userId: existingAdmin.id, email: existingAdmin.email },
+     "secretpass_dont_share",
+     { expiresIn: "1h" }
+   );
+   } catch (err) {
+     const error = new HttpError("Couldn't login, check creds!", 500);
+     return next(error);
+   }
+
+   res.json({role: existingAdmin.role, email: existingAdmin.email, token: token, id:existingAdmin.id})
 
 }
 
