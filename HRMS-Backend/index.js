@@ -12,24 +12,24 @@ const adminRoutes = require("./routes/admin-routes");
 app.use(express.json());
 app.use(cors());
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+  next();
+});
 
-// app.use((req, res, next) => {
-//   const error = new Error("Route not found");
-//   throw error;
-// });
 
 app.use("/api/interviewers", interviewerRoutes);
 app.use("/api/interviewer", userInterviewerRoutes);
 app.use("/api/admin", adminRoutes);
+app.use((req, res, next) => {
+  const error = new Error("Route not found");
+  throw error;
+});
 
 // app.post('/add-product',async (req, res)=>{
 //     let product = new Product(req.body);

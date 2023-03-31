@@ -1,5 +1,6 @@
 const express = require("express");
 const { check } = require("express-validator");
+const checkAuth  = require("..//middlewares/checkAuth.js");
 const interviewerController = require("../controllers/interviewer-controller");
 
 const router = express.Router();
@@ -12,6 +13,7 @@ router.get(
   interviewerController.getInterviewerById
 );
 
+router.use(checkAuth);
 // add interviewers to db
 router.post(
   "/",
